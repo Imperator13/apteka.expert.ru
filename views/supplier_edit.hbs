@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>АПТЕКА - apteka.expert.ru</title>
+        <link type="text/css" rel="stylesheet" href="../css/style.css">
+    </head>
+    <body class="page">
+
+        <header class="page-header">
+            <div class="container"><img src="img/logo.png" style="width: 150px; height: 150px; margin-left: 20px; margin-bottom: 50px;"><h1 class="page-title"><a class="title-home" href="/home">ИНФОРМАЦИОННАЯ СИСТЕМА APTEKA.EXPERT.RU</a></h1></div>
+        </header>
+
+        <main>
+
+            <ul id="navbar">
+                <li><a href="/home">ГЛАВНАЯ</a></li>
+                <li><a href="/pharmacy_order">ЗАКАЗ АПТЕКИ</a></li>
+                <li><a href="/medicine">ЛЕКАРСТВА</a></li>
+                <li><a href="/supplier" class="current">ПОСТАВЩИКИ</a></li>
+                <li><a href="/storage">СКЛАД</a></li>
+                <li><a href="/internet_orders">ИНТЕРНЕТ-ЗАКАЗЫ</a></li>
+                <li><a href="/new_order">НОВЫЙ ЗАКАЗ</a></li>
+            </ul>
+
+            <center>
+
+            <h2>Изменить лекарство</h2>
+            <form action="/supplier_edit/{{supplier_edit_form.supplier_id}}" method="POST" novalidate>
+                <input type="text" name="supplier_barcode" value="{{supplier_edit_form.supplier_barcode}}">
+                <input type="text" name="supplier_name" value="{{supplier_edit_form.supplier_name}}">
+                <input type="text" name="address" value="{{supplier_edit_form.address}}">
+                <br>
+                <input type="text" name="phone_number" value="{{supplier_edit_form.phone_number}}">
+                <input type="text" name="email" value="{{supplier_edit_form.email}}">
+                <input type="text" name="inn" value="{{supplier_edit_form.inn}}">
+                <br>
+                <button class="green" style="margin-top: 30px;" type="submit">Подтвердить</button>
+            </form>
+
+            </center>
+
+            {{#if supplier_edit}}
+            <center>
+                <h3 class="notification-success">Поставщик успешно обновлён!</h3>
+                <a class="green" href="/supplier">Вернуться к списку поставщиков</a>
+            </center>
+            {{/if}}
+        
+        </main>
+    </body>
+</html>

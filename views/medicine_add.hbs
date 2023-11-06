@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>АПТЕКА - apteka.expert.ru</title>
+        <link type="text/css" rel="stylesheet" href="css/style.css">
+    </head>
+    <body class="page">
+
+        <header class="page-header">
+            <div class="container"><img src="img/logo.png" style="width: 150px; height: 150px; margin-left: 20px; margin-bottom: 50px;"><h1 class="page-title"><a class="title-home" href="/home">ИНФОРМАЦИОННАЯ СИСТЕМА APTEKA.EXPERT.RU</a></h1></div>
+        </header>
+
+        <main>
+
+            <ul id="navbar">
+                <li><a href="/home">ГЛАВНАЯ</a></li>
+                <li><a href="/pharmacy_order">ЗАКАЗ АПТЕКИ</a></li>
+                <li><a href="/medicine" class="current">ЛЕКАРСТВА</a></li>
+                <li><a href="/supplier">ПОСТАВЩИКИ</a></li>
+                <li><a href="/storage">СКЛАД</a></li>
+                <li><a href="/internet_orders">ИНТЕРНЕТ-ЗАКАЗЫ</a></li>
+                <li><a href="/new_order">НОВЫЙ ЗАКАЗ</a></li>
+            </ul>
+
+            <center>
+
+            <h2>Добавить новое лекарство</h2>
+            <form method="POST" action="/medicine_add" novalidate>
+                <input type="text" placeholder="Артикул" name="barcode">
+                <input type="text" placeholder="Название" name="medicine_name">
+                <br>
+                <input type="text" placeholder="Активное вещество" name="active_substance">
+                <input type="text" placeholder="Форма" name="form">
+                <br>
+                <input type="text" placeholder="Категория" name="category">
+                <input type="text" placeholder="Единицы измерения" name="measure_units">
+                <br>
+                <input type="text" placeholder="Аналоги" name="synonyms">
+                <input type="text" placeholder="Назначение" name="application">
+                <br>
+                <input type="text" placeholder="Способ применения" name="use_method">
+                <input type="text" placeholder="Производитель" name="manufacturer">
+                <br>
+                
+                <button class="green" type="submit">Подтвердить</button>
+            </form>
+
+            {{#if medicine_add}}
+            <center>
+                <h3 class="notification-success">Лекарство успешно добавлено!</h3>
+                <a class="green" href="/medicine">Вернуться к списку лекарств</a>
+            </center>
+            {{/if}}
+        
+        </main>
+    </body>
+</html>

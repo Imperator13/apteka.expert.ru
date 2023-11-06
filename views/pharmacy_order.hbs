@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>АПТЕКА - apteka.expert.ru</title>
+        <link type="text/css" rel="stylesheet" href="css/style.css">
+    </head>
+    <body class="page">
+
+        <header class="page-header">
+            <div class="container"><img src="img/logo.png" style="width: 150px; height: 150px; margin-left: 20px; margin-bottom: 50px;"><h1 class="page-title"><a class="title-home" href="/home">ИНФОРМАЦИОННАЯ СИСТЕМА APTEKA.EXPERT.RU</a></h1></div>
+        </header>
+
+        <main>
+
+            <ul id="navbar">
+                <li><a href="/home">ГЛАВНАЯ</a></li>
+                <li><a href="/pharmacy_order" class="current">ЗАКАЗ АПТЕКИ</a></li>
+                <li><a href="/medicine">ЛЕКАРСТВА</a></li>
+                <li><a href="/supplier">ПОСТАВЩИКИ</a></li>
+                <li><a href="/storage">СКЛАД</a></li>
+                <li><a href="/internet_orders">ИНТЕРНЕТ-ЗАКАЗЫ</a></li>
+                <li><a href="/new_order">НОВЫЙ ЗАКАЗ</a></li>
+            </ul>
+
+            <center>
+
+            <h1>Список недостающих лекарств</h1>
+
+            <table style="margin-top: 30px;">
+                <tr>
+                    <th style="width: 6%;">Артикул</th>
+                    <th style="width: 10%;">Наименование</th>
+                    <th style="width: 5%;">Активное вещество</th>
+                    <th style="width: 10%;">Производитель</th>
+                    <th style="width: 5%;">Цена</th>
+                    <th style="width: 3%;">Скидка</th>
+                    <th style="width: 5%;">Цена со скидкой</th>
+                    <th style="width: 4%;">В наличии</th>
+                    <th style="width: 4%;">Нормативный остаток</th>
+                    <th style="width: 8%;">Срок годности</th>
+                    <th style="width: 8%;">Артикул поставщика</th>
+                </tr>
+                {{#each pharmacy_order}}
+                <tr>
+                    <td>{{this.barcode}}</td>
+                    <td>{{this.name}}</td>
+                    <td>{{this.active_substance}}</td>
+                    <td>{{this.manufacturer}}</td>
+                    <td>{{this.medicine_price}}.00 руб.</td>
+                    <td>{{this.discount}}%</td>
+                    <td>{{this.medicine_price_discount}}.00 руб.</td>
+                    <td>{{this.stock_amount}}</td>
+                    <td>{{this.regulatory_balance}}</td>
+                    <td>{{this.medicine_shelf_life}}</td>
+                    <td>{{this.supplier_barcode}}</td>
+                </tr>
+                {{/each}}
+            </table>
+
+            <button style="margin-top: 30px;" class="green" onclick="window.location.href = 'http://localhost:4000/pharmacy_order_add'">Сохранить заказ</button><br>
+            <p><a class="green" href="mailto:arseniyshlapak@gmail.com">Отправить на почту</a></p>
+        
+            </center>
+
+        </main>
+    </body>
+</html>

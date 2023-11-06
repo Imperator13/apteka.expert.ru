@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>АПТЕКА - apteka.expert.ru</title>
+        <link type="text/css" rel="stylesheet" href="../css/style.css">
+    </head>
+    <body class="page">
+
+        <header class="page-header">
+            <div class="container"><img src="img/logo.png" style="width: 150px; height: 150px; margin-left: 20px; margin-bottom: 50px;"><h1 class="page-title"><a class="title-home" href="/home">ИНФОРМАЦИОННАЯ СИСТЕМА APTEKA.EXPERT.RU</a></h1></div>
+        </header>
+
+        <main>
+
+            <ul id="navbar">
+                <li><a href="/home">ГЛАВНАЯ</a></li>
+                <li><a href="/pharmacy_order">ЗАКАЗ АПТЕКИ</a></li>
+                <li><a href="/medicine" class="current">ЛЕКАРСТВА</a></li>
+                <li><a href="/supplier">ПОСТАВЩИКИ</a></li>
+                <li><a href="/storage">СКЛАД</a></li>
+                <li><a href="/internet_orders">ИНТЕРНЕТ-ЗАКАЗЫ</a></li>
+                <li><a href="/new_order">НОВЫЙ ЗАКАЗ</a></li>
+            </ul>
+
+            <center>
+
+            <h2>Изменить лекарство</h2>
+            <form action="/medicine_edit/{{medicine_edit_form.medicine_id}}" method="POST" novalidate>
+                <input type="text" name="barcode" value="{{medicine_edit_form.barcode}}">
+                <input type="text" name="medicine_name" value="{{medicine_edit_form.medicine_name}}">
+                <br>
+                <input type="text" name="active_substance" value="{{medicine_edit_form.active_substance}}">
+                <input type="text" name="form" value="{{medicine_edit_form.form}}">
+                <br>
+                <input type="text" name="category" value="{{medicine_edit_form.category}}">
+                <input type="text" name="measure_units" value="{{medicine_edit_form.measure_units}}">
+                <br>
+                <input type="text" name="synonyms" value="{{medicine_edit_form.synonyms}}">
+                <input type="text" name="application" value="{{medicine_edit_form.application}}">
+                <br>
+                <input type="text" name="use_method" value="{{medicine_edit_form.use_method}}">
+                <input type="text" name="manufacturer" value="{{medicine_edit_form.manufacturer}}">
+                <br>
+
+                <button class="green" style="margin-top: 30px;" type="submit">Подтвердить</button>
+            </form>
+
+            </center>
+
+            {{#if medicine_edit}}
+            <center>
+                <h3 class="notification-success">Лекарство успешно обновлено!</h3>
+                <a class="green" href="/medicine">Вернуться к списку лекарств</a>
+            </center>
+            {{/if}}
+        
+        </main>
+    </body>
+</html>

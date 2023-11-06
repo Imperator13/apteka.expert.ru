@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>АПТЕКА - apteka.expert.ru</title>
+        <link type="text/css" rel="stylesheet" href="css/style.css">
+    </head>
+    <body class="page">
+
+        <header class="page-header">
+            <div class="container"><img src="img/logo.png" style="width: 150px; height: 150px; margin-left: 20px; margin-bottom: 50px;"><h1 class="page-title"><a class="title-home" href="/home">ИНФОРМАЦИОННАЯ СИСТЕМА APTEKA.EXPERT.RU</a></h1></div>
+        </header>
+
+        <main>
+
+            <ul id="navbar">
+                <li><a href="/home">ГЛАВНАЯ</a></li>
+                <li><a href="/pharmacy_order">ЗАКАЗ АПТЕКИ</a></li>
+                <li><a href="/medicine">ЛЕКАРСТВА</a></li>
+                <li><a href="/supplier">ПОСТАВЩИКИ</a></li>
+                <li><a href="/storage">СКЛАД</a></li>
+                <li><a href="/internet_orders" class="current">ИНТЕРНЕТ-ЗАКАЗЫ</a></li>
+                <li><a href="/new_order">НОВЫЙ ЗАКАЗ</a></li>
+            </ul>
+
+            <center>
+
+                <h2>Поиск заказа</h2>
+
+                <form method="POST" action="/internet_orders" novalidate>
+                    <input class="input-search" type="text" placeholder="Введите номер заказа" name="internet_orders_search">
+                    <button class="search-background" type="submit"><img src="img/search_button.png" style="width: 16px; height: 16px;"></button>
+                </form>
+
+                <hr>
+
+                {{#if internet_orders_search}}
+                <h1>Информация о заказе</h1>
+
+                <table style="margin-top: 30px">
+                    <tr>
+                        <th style="width: 3%;">Номер заказа</th>
+                        <th style="width: 4%;">Дата заказа</th>
+                        <th style="width: 4%;">Артикул лекарства</th>
+                        <th style="width: 10%;">Наименование лекарства</th>
+                        <th style="width: 4%;">Количество</th>
+                        <th style="width: 4%;">Стоимость</th>
+                        <th style="width: 4%;">Сумма</th>
+                        <th style="width: 10%;">Статус</th>
+                        <th style="width: 2%;">Правка</th>
+                    </tr>
+                    {{#each internet_orders_search.[0]}}
+                    <tr>
+                        <td>{{this.order_number}}</td>
+                        <td>{{this.order_date}}</td>
+                        <td>{{this.medicine_barcode}}</td>
+                        <td>{{this.medicine_name}}</td>
+                        <td>{{this.medicine_amount}}</td>
+                        <td>{{this.medicine_price}}.00 руб.</td>
+                        <td>{{this.sum_price}}.00 руб.</td>
+                        <td>{{this.status}}</td>
+                        <td class="delete-button"><a href="/{{this.client_order_id}}" type="button" onclick="if (!confirm('Вы действительно хотите удалить запись?')) return false"><img src="img/delete_button.png" style="width: 25px; height: 25px; margin-top: 3px;"></a></td>
+                    </tr>
+                    {{/each}}
+                </table>
+
+                {{#each internet_orders_search.[1]}}
+                    <p style="margin-bottom: 30px;">Сумма к оплате: <b>{{this.total_price}}.00 руб.</b></p>
+                {{/each}}
+
+                <!--<form method="POST" action="/internet_orders_cheque/{{internet_orders_search.order_number}}" novalidate>
+                    <button class="green" name="internet_orders_cheque">Печатать чек</button>
+                </form>-->
+
+                <a class="green" href="/internet_orders_cheque/:{{internet_orders_search.order_number}}" type="button">Печатать чек</a>
+
+                {{else}}
+                <h1>Все заказы</h1>
+
+                <table style="margin-top: 30px;">
+                    <tr>
+                        <th style="width: 3%;">Номер заказа</th>
+                        <th style="width: 4%;">Артикул лекарства</th>
+                        <th style="width: 4%;">Дата заказа</th>
+                        <th style="width: 10%;">Наименование лекарства</th>
+                        <th style="width: 2%;">Количество</th>
+                        <th style="width: 4%;">Стоимость</th>
+                        <th style="width: 4%;">Сумма</th>
+                        <th style="width: 10%;">Статус</th>                     
+                    </tr>
+                    {{#each internet_orders}}
+                    <tr>
+                        <td>{{this.order_number}}</td>
+                        <td>{{this.medicine_barcode}}</td>
+                        <td>{{this.order_date}}</td>
+                        <td>{{this.medicine_name}}</td>
+                        <td>{{this.medicine_amount}}</td>
+                        <td>{{this.medicine_price}}.00 руб.</td>
+                        <td>{{this.sum_price}}.00 руб.</td>
+                        <td>{{this.status}}</td>
+                    </tr>
+                    {{/each}}
+                </table>
+                {{/if}}
+
+            </center>
+        
+        </main>
+    </body>
+</html>

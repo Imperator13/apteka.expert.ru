@@ -1,0 +1,455 @@
+* {
+    box-sizing: border-box;
+}
+  
+.container {
+    width: 1300px;
+    margin: 0 auto;
+}
+  
+.page {
+    display: flex;
+    flex-direction: column;
+    min-width: 640px;
+    min-height: 100vh;
+    margin: 0;
+    font-family: "Verdana", "Tahoma", sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    color: #333333;
+    background-color: #e1fae1;
+    background-size: 1440px 720px;
+    background-attachment: fixed;
+}
+
+.title-home {
+    font-size: 200px;
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 200px;
+    font-weight: bold;
+}
+
+#navbar {
+    display: table;
+    margin: 0;
+    padding: 15px;
+    list-style-type: none;
+    border: 2px solid #000;
+    border-radius: 20px 5px;
+    width: 100%;
+    text-align: center;
+    background-color: #3dbd3d;
+    vertical-align: middle;
+}
+
+#navbar li {
+    display: inline-block;
+    padding: 0 20px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#navbar a {
+    color: #ffffff;
+    padding: 5px 10px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+}
+
+#navbar a:hover {
+    border-radius: 20px 5px;
+    color: #000000;
+    background-color: rgba(223, 235, 223, 0.829);
+    transition: 0.5s;
+}
+
+#navbar .current {
+    border-radius: 20px 5px;
+    background-color: #06f74e;
+    color: #000000;
+}
+
+.home-container {
+    display: grid;
+    /*grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;*/
+    grid-template-columns: 300px 300px 300px;
+    grid-template-columns: 300px 300px 300px;
+    gap: 20px 20px;
+    grid-template-areas: 
+    "pharmacy-order medicine supplier"
+    "storage internet-orders new-order";
+    justify-content: center;
+}
+
+.img-home-size {
+    width: 300px;
+    height: 300px;
+}
+
+.img-home:hover {
+    opacity: 0.35;
+    -moz-transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+    cursor: pointer;
+}
+
+.pharmacy-order {
+    grid-area: pharmacy-order;
+}
+
+.medicine {
+    grid-area: medicine;
+}
+
+.supplier {
+    grid-area: supplier;
+}
+
+.storage {
+    grid-area: storage;
+}
+
+.internet-orders {
+    grid-area: internet-orders;
+}
+
+.new-order {
+    grid-area: new-order;
+}
+
+.notification-success {
+    color: #76f33d;
+}
+
+.edit-button {
+    border-right: 0px;
+}
+
+.edit-button:hover {
+    background: none;
+}
+
+.delete-button {
+    border-left: 0px;
+}
+
+.delete-button:hover {
+    background: none;
+}
+
+.minus-button {
+    border-right: 0px;
+}
+
+.minus-button:hover {
+    background: none;
+}
+
+.plus-button {
+    border-left: 0px;
+}
+
+.plus-button:hover {
+    background: none;
+}
+
+.use-method {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    color: #000000;
+}
+  
+td, th {
+    padding: 3px;
+    height: 20px;
+    border: 1px solid #000000;
+}
+  
+thead {
+    background: #F0F0F0;
+}
+  
+td:hover {
+    background: #C565E3;
+    color: #FFFFFF;
+}
+  
+td.form:hover {
+    background: none;
+    color: #FFFFFF;
+}
+  
+.section-title {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 20px;
+    padding: 0;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+}
+  
+a {
+    color: #6653d9;
+}
+  
+a:focus {
+    outline-color: #b6aaff;
+}
+
+.green {
+    border-radius: 4px;
+    cursor: pointer;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+    color: #fff;
+    display: inline;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 16px;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: background-color 0.1s linear;
+    -moz-transition: background-color 0.1s linear;
+    -o-transition: background-color 0.1s linear;
+    transition: background-color 0.1s linear;
+    background-color: rgb( 43, 153, 91 );
+    border: 1px solid rgb( 33, 126, 74 );
+}
+            
+.green:hover {
+    background-color: rgb( 75, 183, 141 );
+}
+
+.input-search {
+    width: 150px;
+    height: 26px;
+}
+
+.search-background {
+    background-color: rgb( 132, 231, 123 );
+    border: 1px solid rgb( 43, 153, 91 );
+    padding-top: 2px;
+    padding-bottom: 2px;
+    cursor: pointer;
+}
+
+.search-background:hover {
+    background-color: rgb(175, 235, 170);
+}
+
+/* Шапка */
+.page-header {
+    margin-bottom: 0px;
+    background-color: #13693a;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+  
+.page-header .container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-image: url("../../views/img/logo.png");
+    background-repeat: no-repeat;
+    background-size: 150px 150px;
+    margin-top: 16px;
+    margin-bottom: 20px;
+    /*margin-left: 16px;*/
+}
+  
+.page-header a {
+    font-size: 36px;
+    line-height: 20px;
+}
+  
+.page-title {
+    margin: 0;
+    margin-top: -150px;
+    margin-bottom: 70px;
+    padding: 0;
+    font-weight: bold;
+    font-size: 36px;
+    text-align: center;
+    color: #FFFFFF;
+}
+  
+/* Мини-шапка */
+.page-header--mini .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    background-image: none;
+}
+  
+.page-header--mini .page-title {
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.02em;
+}
+  
+.page-header--mini .page-title::before {
+    content: "";
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    margin-right: 6px;
+    vertical-align: bottom;
+    background-image: url("img/logo_colored.svg");
+    background-repeat: no-repeat;
+}
+  
+.select-options {
+    width: 150px;
+    border-radius: 5px;
+    padding: 10px;
+    color: #000000;
+    margin-bottom: 30px;
+}
+  
+.submitvalue {
+    background-color: #787686;
+    border: 1px solid #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+    padding: 15px 20px;
+    border-radius: 4px;
+    line-height: 1.5;
+    text-decoration: none;
+    margin-top: 30px;
+    margin-left: -25px;
+    margin-right: 0;
+    display: inline-block;
+    cursor: pointer;
+}
+  
+.submitvaluesmall {
+    background-color: #787686;
+    border: 1px solid #FFFFFF;
+    font-size: 15px;
+    font-weight: bold;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: inline-block;
+}
+  
+.submitvaluesmall:hover {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+  
+.submitvalue:hover {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+  
+#wrapper {
+    display: none;
+}
+  
+select {
+    color: #000000;
+}
+
+.tooltip {
+    border-bottom: 1px dotted #000000;
+    color: #000000; outline: none;
+    cursor: help; text-decoration: none;
+    position: relative;
+}
+
+.tooltip span {
+    margin-left: -999em;
+    position: absolute;
+}
+
+.tooltip:hover span {
+    font-family: Calibri, Tahoma, Geneva, sans-serif;
+    position: absolute;
+    left: 1em;
+    top: 2em;
+    z-index: 99;
+    margin-left: 0;
+    width: 250px;
+}
+
+.tooltip:hover img {
+    border: 0;
+    margin: -10px 0 0 -55px;
+    float: left;
+    position: absolute;
+}
+
+.tooltip:hover em {
+    font-family: Candara, Tahoma, Geneva, sans-serif;
+    font-size: 1.2em;
+    font-weight: bold;
+    display: block;
+    padding: 0.2em 0 0.6em 0;
+}
+  
+.classic {
+    padding: 0.8em 1em;
+}
+
+.custom {
+    padding: 0.5em 0.8em 0.8em 2em;
+}
+
+.classic { background: #FFFFAA; border: 1px solid #FFAD33; }
+.critical { background: #FFCCAA; border: 1px solid #FF3334; }
+.help { background: #9FDAEE; border: 1px solid #2BB0D7; }
+.info { background: #9FDAEE; border: 1px solid #2BB0D7; }
+.warning { background: #FFFFAA; border: 1px solid #FFAD33; }
+  
+/* Подвал */
+.page-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    padding-bottom: 14px;
+    color: #ffffff;
+    background-color: #3f3c53;
+}
+  
+/*.page-footer .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    padding-bottom: 14px;
+}*/
+  
+.page-footer p {
+    margin: 0;
+    padding: 0;
+}
+  
+/* Подвал с логотипом */
+.page-footer--logo .container::before {
+    content: "";
+    display: block;
+    width: 22px;
+    height: 22px;
+    background-image: url("img/logo_white.svg");
+    background-repeat: no-repeat;
+}
+  

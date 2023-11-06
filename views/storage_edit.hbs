@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>АПТЕКА - apteka.expert.ru</title>
+        <link type="text/css" rel="stylesheet" href="../css/style.css">
+    </head>
+    <body class="page">
+
+        <header class="page-header">
+            <div class="container"><img src="img/logo.png" style="width: 150px; height: 150px; margin-left: 20px; margin-bottom: 50px;"><h1 class="page-title"><a class="title-home" href="/home">ИНФОРМАЦИОННАЯ СИСТЕМА APTEKA.EXPERT.RU</a></h1></div>
+        </header>
+
+        <main>
+
+            <ul id="navbar">
+                <li><a href="/home">ГЛАВНАЯ</a></li>
+                <li><a href="/pharmacy_order">ЗАКАЗ АПТЕКИ</a></li>
+                <li><a href="/medicine">ЛЕКАРСТВА</a></li>
+                <li><a href="/supplier">ПОСТАВЩИКИ</a></li>
+                <li><a href="/storage" class="current">СКЛАД</a></li>
+                <li><a href="/internet_orders">ИНТЕРНЕТ-ЗАКАЗЫ</a></li>
+                <li><a href="/new_order">НОВЫЙ ЗАКАЗ</a></li>
+            </ul>
+
+            <center>
+
+            <h2>Изменить лекарство</h2>
+            <form action="/storage_edit/{{storage_edit_form.storage_id}}" method="POST" novalidate>
+                <input type="text" name="barcode" value="{{storage_edit_form.barcode}}">
+                <input type="text" name="name" value="{{storage_edit_form.name}}">
+                <input type="text" name="active_substance" value="{{storage_edit_form.active_substance}}">
+                <br>
+                <input type="text" name="synonyms" value="{{storage_edit_form.synonyms}}">
+                <input type="text" name="manufacturer" value="{{storage_edit_form.manufacturer}}">
+                <input type="text" name="medicine_price" value="{{storage_edit_form.medicine_price}}">
+                <br>
+                <input type="text" name="discount" value="{{storage_edit_form.discount}}">
+                <input type="text" name="medicine_price_discount" value="{{storage_edit_form.medicine_price_discount}}">
+                <input type="text" name="stock_amount" value="{{storage_edit_form.stock_amount}}">
+                <br>
+                <input type="text" name="regulatory_balance" value="{{storage_edit_form.regulatory_balance}}">
+                <input type="text" name="medicine_shelf_life" value="{{storage_edit_form.medicine_shelf_life}}">
+                <input type="text" name="supplier_barcode" value="{{storage_edit_form.supplier_barcode}}">
+                <br>
+
+                <button class="green" style="margin-top: 30px;" type="submit">Подтвердить</button>
+            </form>
+
+            </center>
+
+            {{#if storage_edit}}
+            <center>
+                <h3 class="notification-success">Лекарство успешно обновлено!</h3>
+                <a class="green" href="/storage">Вернуться к складу</a>
+            </center>
+            {{/if}}
+        
+        </main>
+    </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>АПТЕКА - apteka.expert.ru</title>
+        <link type="text/css" rel="stylesheet" href="css/style.css">
+    </head>
+    <body class="page">
+
+        <header class="page-header">
+            <div class="container"><img src="img/logo.png" style="width: 150px; height: 150px; margin-left: 20px; margin-bottom: 50px;"><h1 class="page-title"><a class="title-home" href="/home">ИНФОРМАЦИОННАЯ СИСТЕМА APTEKA.EXPERT.RU</a></h1></div>
+        </header>
+
+        <main>
+
+            <ul id="navbar">
+                <li><a href="/home">ГЛАВНАЯ</a></li>
+                <li><a href="/pharmacy_order">ЗАКАЗ АПТЕКИ</a></li>
+                <li><a href="/medicine">ЛЕКАРСТВА</a></li>
+                <li><a href="/supplier" class="current">ПОСТАВЩИКИ</a></li>
+                <li><a href="/storage">СКЛАД</a></li>
+                <li><a href="/internet_orders">ИНТЕРНЕТ-ЗАКАЗЫ</a></li>
+                <li><a href="/new_order">НОВЫЙ ЗАКАЗ</a></li>
+            </ul>
+
+            <center>
+
+            <h2>Добавить нового поставщика</h2>
+            <form method="POST" action="/supplier_add" novalidate>
+                <input type="text" placeholder="Артикул" name="supplier_barcode">
+                <input type="text" placeholder="Наименование" name="supplier_name">
+                <input type="text" placeholder="Адрес" name="address">
+                <br>
+                <input type="text" placeholder="Номер телефона" name="phone_number">
+                <input type="text" placeholder="Электронный адрес" name="email">
+                <input type="text" placeholder="ИНН" name="inn">
+                <br>
+                <button class="green" type="submit">Подтвердить</button>
+            </form>
+
+            {{#if supplier_add}}
+            <center>
+                <h3 class="notification-success">Поставщик успешно добавлен!</h3>
+                <a class="green" href="/supplier">Вернуться к списку поставщиков</a>
+            </center>
+            {{/if}}
+        
+        </main>
+    </body>
+</html>

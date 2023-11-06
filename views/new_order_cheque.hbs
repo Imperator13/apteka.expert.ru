@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>АПТЕКА - apteka.expert.ru</title>
+        <link type="text/css" rel="stylesheet" href="css/style.css">
+    </head>
+    <body class="page">
+
+        <header class="page-header">
+            <div class="container"><img src="img/logo.png" style="width: 150px; height: 150px; margin-left: 20px; margin-bottom: 50px;"><h1 class="page-title"><a class="title-home" href="/home">ИНФОРМАЦИОННАЯ СИСТЕМА APTEKA.EXPERT.RU</a></h1></div>
+        </header>
+
+        <main>
+
+            <ul id="navbar">
+                <li><a href="/home">ГЛАВНАЯ</a></li>
+                <li><a href="/pharmacy_order">ЗАКАЗ АПТЕКИ</a></li>
+                <li><a href="/medicine">ЛЕКАРСТВА</a></li>
+                <li><a href="/supplier">ПОСТАВЩИКИ</a></li>
+                <li><a href="/storage">СКЛАД</a></li>
+                <li><a href="/internet_orders">ИНТЕРНЕТ-ЗАКАЗЫ</a></li>
+                <li><a href="/new_order" class="current">НОВЫЙ ЗАКАЗ</a></li>
+            </ul>
+
+        <center>
+
+        <h1 style="margin-top: 50px;">Текущий заказ</h1>
+
+            <table>
+                <tr>
+                    <th style="width: 4%;">Артикул</th>
+                    <th style="width: 3%;">Дата заказа</th>
+                    <th style="width: 10%;">Наименование</th>
+                    <th style="width: 1%;">Категория</th>
+                    <th style="width: 3%;">Цена</th>
+                    <th colspan="2" style="width: 2%;">Количество</th>
+                    <th style="width: 1%;">Скидка</th>
+                    <th style="width: 6%;">Статус</th>
+                </tr>
+                {{#each new_order_cheque}}
+                <tr>
+                    <td>{{this.medicine_barcode}}</td>
+                    <td>{{this.order_date}}</td>
+                    <td>{{this.medicine_name}}</td>
+                    <td>{{this.category}}</td>
+                    <td>{{this.medicine_price}}.00 руб.</td>
+                    <td class="edit-button">{{this.medicine_amount}}</td>
+                    <td class="delete-button"><a href="/new_order_change_amount/{{this.client_order_id}}" type="button"><img src="img/edit_button.png" style="width: 40px; height: 40px;"></a></td>
+                    <td>{{this.discount}}%</td>
+                    <td style="color: #ff0000">{{this.status}}</td>
+                </tr>
+                {{/each}}
+            </table>
+
+            <button class="green" style="margin-top: 70px; width: 200px;" onclick="window.location.href = 'http://localhost:4000/new_order'">К списку лекарств</button>
+            <br>
+            <button class="green" style="margin-top: 20px;" onclick="window.location.href = 'http://localhost:4000/new_order_cheque_result'">Оформить заказ</button>
+
+        </center>
+        
+        </main>
+    </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>АПТЕКА - apteka.expert.ru</title>
+        <link type="text/css" rel="stylesheet" href="css/style.css">
+    </head>
+    <body class="page">
+
+        <header class="page-header">
+            <div class="container"><img src="img/logo.png" style="width: 150px; height: 150px; margin-left: 20px; margin-bottom: 50px;"><h1 class="page-title"><a class="title-home" href="/home">ИНФОРМАЦИОННАЯ СИСТЕМА APTEKA.EXPERT.RU</a></h1></div>
+        </header>
+
+        <main>
+
+            <ul id="navbar">
+                <li><a href="/home">ГЛАВНАЯ</a></li>
+                <li><a href="/pharmacy_order">ЗАКАЗ АПТЕКИ</a></li>
+                <li><a href="/medicine">ЛЕКАРСТВА</a></li>
+                <li><a href="/supplier">ПОСТАВЩИКИ</a></li>
+                <li><a href="/storage" class="current">СКЛАД</a></li>
+                <li><a href="/internet_orders">ИНТЕРНЕТ-ЗАКАЗЫ</a></li>
+                <li><a href="/new_order">НОВЫЙ ЗАКАЗ</a></li>
+            </ul>
+
+            <center>
+
+            <h2>Добавить лекарство на склад</h2>
+            <form method="POST" action="/storage_add" novalidate>
+                <input type="text" placeholder="Артикул" name="barcode">
+                <input type="text" placeholder="Наименование" name="name">
+                <input type="text" placeholder="Активное вещество" name="active_substance">
+                <br>
+                <input type="text" placeholder="Аналоги" name="synonyms">
+                <input type="text" placeholder="Производитель" name="manufacturer">
+                <input type="text" placeholder="Цена" name="medicine_price">
+                <br>
+                <input type="text" placeholder="Скидка" name="discount">
+                <input type="text" placeholder="Цена со скидкой" name="medicine_price_discount">
+                <input type="text" placeholder="В наличии" name="stock_amount">
+                <br>
+                <input type="text" placeholder="Нормативный остаток" name="regulatory_balance">
+                <input type="text" placeholder="Срок годности" name="medicine_shelf_life">
+                <input type="text" placeholder="Артикул поставщика" name="supplier_barcode">
+                <br>
+
+                <button class="green" type="submit" style="margin-top: 30px;">Подтвердить</button>
+            </form>
+
+            {{#if storage_add}}
+            <center>
+                <h3 class="notification-success">Лекарство успешно добавлено!</h3>
+                <a class="green" href="/storage">Вернуться к складу</a>
+            </center>
+            {{/if}}
+
+            </center>
+
+        </main>
+    </body>
+</html>

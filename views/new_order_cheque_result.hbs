@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>АПТЕКА - apteka.expert.ru</title>
+        <link type="text/css" rel="stylesheet" href="css/style.css">
+    </head>
+    <body class="page">
+
+        <header class="page-header">
+            <div class="container"><img src="img/logo.png" style="width: 150px; height: 150px; margin-left: 20px; margin-bottom: 50px;"><h1 class="page-title"><a class="title-home" href="/home">ИНФОРМАЦИОННАЯ СИСТЕМА APTEKA.EXPERT.RU</a></h1></div>
+        </header>
+
+        <main>
+
+            <ul id="navbar">
+                <li><a href="/home">ГЛАВНАЯ</a></li>
+                <li><a href="/pharmacy_order">ЗАКАЗ АПТЕКИ</a></li>
+                <li><a href="/medicine">ЛЕКАРСТВА</a></li>
+                <li><a href="/supplier">ПОСТАВЩИКИ</a></li>
+                <li><a href="/storage">СКЛАД</a></li>
+                <li><a href="/internet_orders">ИНТЕРНЕТ-ЗАКАЗЫ</a></li>
+                <li><a href="/new_order" class="current">НОВЫЙ ЗАКАЗ</a></li>
+            </ul>
+
+        <center>
+
+        <h1 style="margin-top: 50px;">Текущий заказ</h1>
+
+            <table>
+                <tr>
+                    <th style="width: 4%;">Артикул</th>
+                    <th style="width: 3%;">Дата заказа</th>
+                    <th style="width: 10%;">Наименование</th>
+                    <th style="width: 1%;">Категория</th>
+                    <th style="width: 2%;">Количество</th>
+                    <th style="width: 3%;">Цена</th>
+                    <th style="width: 1%;">Скидка</th>
+                    <th style="width: 3%;">Стоимость</th>
+                </tr>
+                {{#each new_order_cheque_result.[1]}}
+                <tr>
+                    <td>{{this.medicine_barcode}}</td>
+                    <td>{{this.order_date}}</td>
+                    <td>{{this.medicine_name}}</td>
+                    <td>{{this.category}}</td>
+                    <td>{{this.medicine_amount}}</td>
+                    <td>{{this.medicine_price}}.00 руб.</td>
+                    <td>{{this.discount}}%</td>
+                    <td>{{this.sum_price}}.00 руб.</td>
+                </tr>
+                {{/each}}
+            </table>
+
+            {{#each new_order_cheque_result.[2]}}
+                <p>Сумма заказа: {{this.total_price}}.00 руб.</p>
+            {{/each}}
+
+        </center>
+        
+        </main>
+    </body>
+</html>

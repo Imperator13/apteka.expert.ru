@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>АПТЕКА - apteka.expert.ru</title>
+        <link type="text/css" rel="stylesheet" href="../css/style.css">
+    </head>
+    <body class="page">
+
+        <header class="page-header">
+            <div class="container"><img src="img/logo.png" style="width: 150px; height: 150px; margin-left: 20px; margin-bottom: 50px;"><h1 class="page-title"><a class="title-home" href="/home">ИНФОРМАЦИОННАЯ СИСТЕМА APTEKA.EXPERT.RU</a></h1></div>
+        </header>
+
+        <main>
+
+            <ul id="navbar">
+                <li><a href="/home">ГЛАВНАЯ</a></li>
+                <li><a href="/pharmacy_order">ЗАКАЗ АПТЕКИ</a></li>
+                <li><a href="/medicine">ЛЕКАРСТВА</a></li>
+                <li><a href="/supplier">ПОСТАВЩИКИ</a></li>
+                <li><a href="/storage" class="current">СКЛАД</a></li>
+                <li><a href="/internet_orders">ИНТЕРНЕТ-ЗАКАЗЫ</a></li>
+                <li><a href="/new_order">НОВЫЙ ЗАКАЗ</a></li>
+            </ul>
+
+            <center>
+
+            {{#each storage_view}}
+            <h1 style="line-height: 1.2px;">Справочная информация по лекарству "{{this.medicine_name}}"</h1>
+            {{/each}}
+
+            </center>
+
+            <div style="margin-left: 50px; margin-right: 50px; margin-top: 50px;">
+            {{#each storage_view}}
+                <p><b>Артикул: </b>{{this.barcode}}</p>
+                <p><b>Наименование лекарства: </b>{{this.medicine_name}}</p>
+                <p><b>Активное вещество: </b>{{this.active_substance}}</p>
+                <p><b>Форма выпуска: </b>{{this.form}}</p>
+                <p><b>Категория: </b><a class="tooltip" href="#">{{this.category}}<span class="custom help"><em>Справка</em>Категория A - отпускается с рецептом.<br>Категория B - отпускается без рецепта.</span></a></p>
+                <p><b>Единицы измерения: </b>{{this.measure_units}}</p>
+                <p><b>Аналоги: </b>{{this.synonyms}}</p>
+                <p><b>Область применения: </b>{{this.application}}</p>
+                <p><b>Способ применения:</b></p>
+                <p>{{this.use_method}}</p>
+                <p><b>Производитель/Страна: </b>{{this.manufacturer}}</p>
+            {{/each}}
+            </div>
+
+            <center>
+                <a class="green" href="/storage">Вернуться к складу</a>
+            </center>
+        
+        </main>
+    </body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>АПТЕКА - apteka.expert.ru</title>
+        <link type="text/css" rel="stylesheet" href="css/style.css">
+    </head>
+    <body class="page">
+
+        <header class="page-header">
+            <div class="container"><img src="img/logo.png" style="width: 150px; height: 150px; margin-left: 20px; margin-bottom: 50px;"><h1 class="page-title"><a class="title-home" href="/home">ИНФОРМАЦИОННАЯ СИСТЕМА APTEKA.EXPERT.RU</a></h1></div>
+        </header>
+
+        <main>
+
+            <ul id="navbar">
+                <li><a href="/home">ГЛАВНАЯ</a></li>
+                <li><a href="/pharmacy_order">ЗАКАЗ АПТЕКИ</a></li>
+                <li><a href="/medicine">ЛЕКАРСТВА</a></li>
+                <li><a href="/supplier">ПОСТАВЩИКИ</a></li>
+                <li><a href="/storage" class="current">СКЛАД</a></li>
+                <li><a href="/internet_orders">ИНТЕРНЕТ-ЗАКАЗЫ</a></li>
+                <li><a href="/new_order">НОВЫЙ ЗАКАЗ</a></li>
+            </ul>
+
+            <form style="float: right; margin-top: 7px; margin-bottom: 7px;" method="POST" action="/storage" novalidate>
+                <input class="input-search" type="text" placeholder="Поиск" name="storage_search">
+                <button class="search-background" type="submit"><img src="img/search_button.png" style="width: 16px; height: 16px;"></button>
+            </form>
+
+            <center>
+            
+            {{#if storage_search}}
+            <h1 style="margin-top: 50px;">Результаты поиска</h1>
+
+            <button style="float: right; margin-bottom: 15px;" class="green" onclick="window.location.href = 'http://localhost:4000/storage_add'">Добавить лекарство</button>
+
+            <table style="margin-top: 30px;">
+                <tr>
+                    <th style="width: 4%;">Артикул</th>
+                    <th style="width: 10%;">Наименование</th>
+                    <th style="width: 5%;">Активное вещество</th>
+                    <th style="width: 15%;">Аналоги</th>
+                    <th style="width: 10%;">Производитель</th>
+                    <th style="width: 5%;">Цена</th>
+                    <th style="width: 3%;">Скидка</th>
+                    <th style="width: 5%;">Цена со скидкой</th>
+                    <th style="width: 4%;">В наличии</th>
+                    <th style="width: 4%;">Нормативный остаток</th>
+                    <th style="width: 8%;">Срок годности</th>
+                    <th style="width: 8%;">Артикул поставщика</th>
+                    <th colspan="3" style="width: 3%;">Правка</th>
+                </tr>
+                {{#each storage_search}}
+                <tr>
+                    <td>{{this.barcode}}</td>
+                    <td>{{this.name}}</td>
+                    <td>{{this.active_substance}}</td>
+                    <td>{{this.synonyms}}</td>
+                    <td>{{this.manufacturer}}</td>
+                    <td>{{this.medicine_price}}.00 руб.</td>
+                    <td>{{this.discount}}%</td>
+                    <td>{{this.medicine_price_discount}}.00 руб.</td>
+                    <td>{{this.stock_amount}}</td>
+                    <td>{{this.regulatory_balance}}</td>
+                    <td>{{this.medicine_shelf_life}}</td>
+                    <td>{{this.supplier_barcode}}</td>
+                    <td class="edit-button"><a href="/storage_view/{{this.storage_id}}" type="button"><img src="img/view_button.png" style="width: 30px; height: 30px;"></a></td>
+                    <td class="edit-button delete-button"><a href="/storage_edit/{{this.storage_id}}" type="button"><img src="img/edit_button.png" style="width: 30px; height: 30px;"></a></td>
+                    <td class="delete-button"><a href="/storage_delete/{{this.storage_id}}" type="button" onclick="if (!confirm('Вы действительно хотите удалить запись?')) return false"><img src="img/delete_button.png" style="width: 30px; height: 30px;"></a></td>
+                </tr>
+                {{/each}}
+            </table>
+
+            {{else}}
+            <h1 style="margin-top: 50px;">Все наименования</h1>
+
+            <button style="float: right; margin-bottom: 15px;" class="green" onclick="window.location.href = 'http://localhost:4000/storage_add'">Добавить лекарство</button>
+
+            <table style="margin-top: 30px;">
+                <tr>
+                    <th style="width: 6%;">Артикул</th>
+                    <th style="width: 10%;">Наименование</th>
+                    <th style="width: 5%;">Активное вещество</th>
+                    <th style="width: 15%;">Аналоги</th>
+                    <th style="width: 10%;">Производитель</th>
+                    <th style="width: 5%;">Цена</th>
+                    <th style="width: 3%;">Скидка</th>
+                    <th style="width: 5%;">Цена со скидкой</th>
+                    <th style="width: 4%;">В наличии</th>
+                    <th style="width: 4%;">Нормативный остаток</th>
+                    <th style="width: 8%;">Срок годности</th>
+                    <th style="width: 8%;">Артикул поставщика</th>
+                    <th colspan="3" style="width: 3%;">Правка</th>
+                </tr>
+                {{#each storage}}
+                <tr>
+                    <td>{{this.barcode}}</td>
+                    <td>{{this.name}}</td>
+                    <td>{{this.active_substance}}</td>
+                    <td>{{this.synonyms}}</td>
+                    <td>{{this.manufacturer}}</td>
+                    <td>{{this.medicine_price}}.00 руб.</td>
+                    <td>{{this.discount}}%</td>
+                    <td>{{this.medicine_price_discount}}.00 руб.</td>
+                    <td>{{this.stock_amount}}</td>
+                    <td>{{this.regulatory_balance}}</td>
+                    <td>{{this.medicine_shelf_life}}</td>
+                    <td>{{this.supplier_barcode}}</td>
+                    <td class="edit-button"><a href="/storage_view/{{this.storage_id}}" type="button"><img src="img/view_button.png" style="width: 30px; height: 30px;"></a></td>
+                    <td class="edit-button delete-button"><a href="/storage_edit/{{this.storage_id}}" type="button"><img src="img/edit_button.png" style="width: 30px; height: 30px;"></a></td>
+                    <td class="delete-button"><a href="/storage_delete/{{this.storage_id}}" type="button" onclick="if (!confirm('Вы действительно хотите удалить запись?')) return false"><img src="img/delete_button.png" style="width: 30px; height: 30px;"></a></td>
+                </tr>
+                {{/each}}
+            </table>
+
+            {{/if}}
+            
+            </center>
+        
+        </main>
+    </body>
+</html>
